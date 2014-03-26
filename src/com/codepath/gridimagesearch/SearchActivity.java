@@ -59,7 +59,7 @@ public class SearchActivity extends ActionBarActivity {
 			public void onLoadMore(int page, int totalItemsCount) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to your AdapterView
-            customLoadMoreDataFromApi(page); 
+            customLoadMoreDataFromApi(totalItemsCount); 
                 // or customLoadMoreDataFromApi(totalItemsCount); 
         }
         });
@@ -70,6 +70,7 @@ public class SearchActivity extends ActionBarActivity {
       // This method probably sends out a network request and appends new data items to your adapter. 
       // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
       // Deserialize API response and then construct new objects to append to the adapter
+    	
     }
 
 	@Override

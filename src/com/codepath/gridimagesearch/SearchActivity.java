@@ -59,7 +59,7 @@ public class SearchActivity extends ActionBarActivity {
 			public void onLoadMore(int page, int totalItemsCount) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to your AdapterView
-            customLoadMoreDataFromApi(totalItemsCount);
+                customLoadMoreDataFromApi(totalItemsCount);
                 // or customLoadMoreDataFromApi(totalItemsCount); 
         }
         });
@@ -92,7 +92,6 @@ public class SearchActivity extends ActionBarActivity {
 				    Log.d("DEBUG", imageResults.toString());
 				} catch (JSONException e) {
 					e.printStackTrace();
-					
 				}
 			  }
 		   });

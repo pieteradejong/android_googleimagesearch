@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Google Image Search</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="text_search">Search</string>
+    <string name="search_hint">Enter search query</string>
+    <string name="title_activity_image_display">ImageDisplayActivity</string>
+    <string name="title_activity_filter">FilterActivity</string>
+    <string name="txtFilterPageTitle">Advanced Search Options</string>
+
+    
+    <string name="spinner_prompt_color">Color</string>
+    <string name="spinner_prompt_size">Size</string>
+    <string name="spinner_prompt_type">Type</string>
+    <string name="etSiteFilter">Website:</string>
+    <string name="btnSaveFilter">Save</string>
+    
+</resources>

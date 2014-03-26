@@ -59,7 +59,7 @@ public class SearchActivity extends ActionBarActivity {
 			public void onLoadMore(int page, int totalItemsCount) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to your AdapterView
-            customLoadMoreDataFromApi(totalItemsCount); 
+            customLoadMoreDataFromApi(totalItemsCount);
                 // or customLoadMoreDataFromApi(totalItemsCount); 
         }
         });
@@ -70,7 +70,32 @@ public class SearchActivity extends ActionBarActivity {
       // This method probably sends out a network request and appends new data items to your adapter. 
       // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
       // Deserialize API response and then construct new objects to append to the adapter
-    	
+    	String query = etQuery.getText().toString();
+    	AsyncHttpClient client = new AsyncHttpClient();
+		client.get("https://ajax.googleapis.com/ajax/services/search/images?" + 
+		           "rsz=8" +
+		           "&start=" + offset + 
+		           "&v=1.0" + 
+		           "&as_sitesearch=" + filter_site + 
+		           "&imgcolor=" + filter_color + 
+		           "&imgsz=" + filter_size + 
+		           "&imgtype=" + filter_type +
+		           "&q=" + Uri.encode(query), 
+		           new JsonHttpResponseHandler() {
+			@Override         
+			public void onSuccess(JSONObject response) {
+				JSONArray imageJsonResults = null;
+				try {
+					imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
+//					imageResults.clear();
+				    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
+				    Log.d("DEBUG", imageResults.toString());
+				} catch (JSONException e) {
+					e.printStackTrace();
+					
+				}
+			  }
+		   });
     }
 
 	@Override

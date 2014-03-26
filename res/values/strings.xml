@@ -16,5 +16,8 @@
     <string name="spinner_prompt_type">Type</string>
     <string name="etSiteFilter">Website:</string>
     <string name="btnSaveFilter">Save</string>
+    <string name="strImageSize">Image size:</string>
+    <string name="strColorFilter">Color filter:</string>
+    <string name="strImageType">Image type:</string>
     
 </resources>

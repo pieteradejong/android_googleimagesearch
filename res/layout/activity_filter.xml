@@ -18,16 +18,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Spinner
-        android:id="@+id/spinner_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtFilterTitle"
-        android:layout_below="@+id/txtFilterTitle"
-        android:layout_marginTop="16dp"
-        android:entries="@array/sizes_array"
-        android:prompt="@string/spinner_prompt_size" />
-
-    <Spinner
         android:id="@+id/spinner_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +35,7 @@
 
     <EditText
         android:id="@+id/etFilterSite"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/spinner_type"
         android:layout_below="@+id/spinner_type"
@@ -54,15 +44,6 @@
 
         <requestFocus />
     </EditText>
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner_type"
-        android:layout_below="@+id/spinner_type"
-        android:text="@string/etSiteFilter"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
         android:id="@+id/btnSaveFilter"
@@ -73,5 +54,51 @@
         android:layout_marginTop="34dp"
         android:onClick="saveFilter"
         android:text="@string/btnSaveFilter" />
+
+    <Spinner
+        android:id="@+id/spinner_size"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtFilterTitle"
+        android:entries="@array/sizes_array"
+        android:prompt="@string/spinner_prompt_size" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/spinner_size"
+        android:layout_toLeftOf="@+id/spinner_size"
+        android:text="@string/strImageSize"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/spinner_color"
+        android:layout_toLeftOf="@+id/spinner_color"
+        android:text="@string/strColorFilter"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/spinner_type"
+        android:layout_toLeftOf="@+id/spinner_type"
+        android:text="@string/strImageType"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/etFilterSite"
+        android:layout_alignBottom="@+id/etFilterSite"
+        android:layout_toLeftOf="@+id/etFilterSite"
+        android:text="@string/etSiteFilter"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
     
 </RelativeLayout>

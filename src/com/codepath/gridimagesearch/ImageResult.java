@@ -43,12 +43,8 @@ public class ImageResult implements Serializable {
 				results.add(new ImageResult(array.getJSONObject(x)));
 			} catch (JSONException e) {
 				e.printStackTrace();
-				
 			} 
-			
 		}
 		return results;
-		
 	}
-
 }

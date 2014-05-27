@@ -72,28 +72,26 @@ public class SearchActivity extends ActionBarActivity {
       // Deserialize API response and then construct new objects to append to the adapter
     	String query = etQuery.getText().toString();
     	AsyncHttpClient client = new AsyncHttpClient();
-		client.get("https://ajax.googleapis.com/ajax/services/search/images?" + 
-		           "rsz=8" +
-		           "&start=" + offset + 
-		           "&v=1.0" + 
-		           "&as_sitesearch=" + filter_site + 
-		           "&imgcolor=" + filter_color + 
-		           "&imgsz=" + filter_size + 
-		           "&imgtype=" + filter_type +
-		           "&q=" + Uri.encode(query), 
-		           new JsonHttpResponseHandler() {
-			@Override         
-			public void onSuccess(JSONObject response) {
-				JSONArray imageJsonResults = null;
-				try {
-					imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
-//					imageResults.clear();
-				    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
-				    Log.d("DEBUG", imageResults.toString());
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-			  }
+			client.get("https://ajax.googleapis.com/ajax/services/search/images?" + 
+				         "rsz=8" +
+				         "&start=" + offset + 
+				         "&v=1.0" + 
+				         "&as_sitesearch=" + filter_site + 
+				         "&imgcolor=" + filter_color + 
+				         "&imgsz=" + filter_size + 
+				         "&imgtype=" + filter_type +
+				         "&q=" + Uri.encode(query), 
+				         new JsonHttpResponseHandler() {
+										@Override         
+										public void onSuccess(JSONObject response) {
+											JSONArray imageJsonResults = null;
+											try {
+												imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
+											    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
+											} catch (JSONException e) {
+												e.printStackTrace();
+											}
+									  }
 		   });
     }
 
@@ -122,24 +120,6 @@ public class SearchActivity extends ActionBarActivity {
 		String query = etQuery.getText().toString();
 		Toast.makeText(this, "Searching for " + query, Toast.LENGTH_SHORT).show();
 		AsyncHttpClient client = new AsyncHttpClient();
-//		Toast.makeText(this, 
-//				
-//				
-//				"https://ajax.googleapis.com/ajax/services/search/images?" + 
-//			           "rsz=8" +
-//			           "&start=" + 0 + 
-//			           "&v=1.0" + 
-//			           "&as_sitesearch=" + filter_site + 
-//			           "&imgcolor=" + filter_color + 
-//			           "&imgsz=" + filter_size + 
-//			           "&imgtype=" + filter_type +
-//			           "&q=" + Uri.encode(query)		
-//				
-//				
-//				
-//				, Toast.LENGTH_LONG).show();
-//		
-	           
 		client.get("https://ajax.googleapis.com/ajax/services/search/images?" + 
 		           "rsz=8" +
 		           "&start=" + 0 + 
@@ -150,18 +130,16 @@ public class SearchActivity extends ActionBarActivity {
 		           "&imgtype=" + filter_type +
 		           "&q=" + Uri.encode(query), 
 		           new JsonHttpResponseHandler() {
-			@Override         
-			public void onSuccess(JSONObject response) {
-				JSONArray imageJsonResults = null;
-				try {
-					imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
-					imageResults.clear();
-				    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
-				    Log.d("DEBUG", imageResults.toString());
-				} catch (JSONException e) {
-					e.printStackTrace();
-					
-				}
+									@Override         
+									public void onSuccess(JSONObject response) {
+										JSONArray imageJsonResults = null;
+										try {
+											imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
+											imageResults.clear();
+									    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
+										} catch (JSONException e) {
+											e.printStackTrace();		
+										}
 			  }
 		   });
 	}
@@ -184,7 +162,6 @@ public class SearchActivity extends ActionBarActivity {
 		  filter_size = data.getExtras().getString("filter_size");
 		  filter_type = data.getExtras().getString("filter_type");
 		  filter_site = data.getExtras().getString("filter_site");
-		  
 		  
 		 onImageSearch(btnSearch);
 	     Toast.makeText(this, filter_color + " " + filter_size + " " + filter_type + " " + filter_site, Toast.LENGTH_SHORT).show();

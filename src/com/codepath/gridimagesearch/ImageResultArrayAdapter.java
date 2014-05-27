@@ -30,5 +30,4 @@ public class ImageResultArrayAdapter extends ArrayAdapter<ImageResult> {
 		ivImage.setImageUrl(imageInfo.getThumbUrl());
 		return ivImage;
 	}
-
 }

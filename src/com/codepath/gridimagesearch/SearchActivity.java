@@ -66,34 +66,34 @@ public class SearchActivity extends ActionBarActivity {
 	}
 	
 	// Append more data into the adapter
-    public void customLoadMoreDataFromApi(int offset) {
-      // This method probably sends out a network request and appends new data items to your adapter. 
-      // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
-      // Deserialize API response and then construct new objects to append to the adapter
-    	String query = etQuery.getText().toString();
-    	AsyncHttpClient client = new AsyncHttpClient();
-			client.get("https://ajax.googleapis.com/ajax/services/search/images?" + 
-				         "rsz=8" +
-				         "&start=" + offset + 
-				         "&v=1.0" + 
-				         "&as_sitesearch=" + filter_site + 
-				         "&imgcolor=" + filter_color + 
-				         "&imgsz=" + filter_size + 
-				         "&imgtype=" + filter_type +
-				         "&q=" + Uri.encode(query), 
-				         new JsonHttpResponseHandler() {
-										@Override         
-										public void onSuccess(JSONObject response) {
-											JSONArray imageJsonResults = null;
-											try {
-												imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
-											    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
-											} catch (JSONException e) {
-												e.printStackTrace();
-											}
-									  }
-		   });
-    }
+  public void customLoadMoreDataFromApi(int offset) {
+  // This method probably sends out a network request and appends new data items to your adapter. 
+  // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
+  // Deserialize API response and then construct new objects to append to the adapter
+	String query = etQuery.getText().toString();
+	AsyncHttpClient client = new AsyncHttpClient();
+	client.get("https://ajax.googleapis.com/ajax/services/search/images?" + 
+     "rsz=8" +
+     "&start=" + offset + 
+     "&v=1.0" + 
+     "&as_sitesearch=" + filter_site + 
+     "&imgcolor=" + filter_color + 
+     "&imgsz=" + filter_size + 
+     "&imgtype=" + filter_type +
+     "&q=" + Uri.encode(query), 
+     new JsonHttpResponseHandler() {
+				@Override         
+				public void onSuccess(JSONObject response) {
+					JSONArray imageJsonResults = null;
+					try {
+						imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
+					    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+			  }
+   });
+}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -121,27 +121,27 @@ public class SearchActivity extends ActionBarActivity {
 		Toast.makeText(this, "Searching for " + query, Toast.LENGTH_SHORT).show();
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get("https://ajax.googleapis.com/ajax/services/search/images?" + 
-		           "rsz=8" +
-		           "&start=" + 0 + 
-		           "&v=1.0" + 
-		           "&as_sitesearch=" + filter_site + 
-		           "&imgcolor=" + filter_color + 
-		           "&imgsz=" + filter_size + 
-		           "&imgtype=" + filter_type +
-		           "&q=" + Uri.encode(query), 
-		           new JsonHttpResponseHandler() {
-									@Override         
-									public void onSuccess(JSONObject response) {
-										JSONArray imageJsonResults = null;
-										try {
-											imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
-											imageResults.clear();
-									    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
-										} catch (JSONException e) {
-											e.printStackTrace();		
-										}
-			  }
-		   });
+	     "rsz=8" +
+	     "&start=" + 0 + 
+	     "&v=1.0" + 
+	     "&as_sitesearch=" + filter_site + 
+	     "&imgcolor=" + filter_color + 
+	     "&imgsz=" + filter_size + 
+	     "&imgtype=" + filter_type +
+	     "&q=" + Uri.encode(query), 
+	     new JsonHttpResponseHandler() {
+					@Override         
+					public void onSuccess(JSONObject response) {
+						JSONArray imageJsonResults = null;
+						try {
+							imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
+							imageResults.clear();
+					    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
+						} catch (JSONException e) {
+							e.printStackTrace();		
+						}
+				  }
+	   });
 	}
 	
 	public void onFilterAction() {

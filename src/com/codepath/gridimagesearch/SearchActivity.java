@@ -25,28 +25,27 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class SearchActivity extends ActionBarActivity {
-	EditText etQuery;
-	GridView gvResults;
-	Button btnSearch;
-	ArrayList<ImageResult> imageResults = new ArrayList<ImageResult>();
-    ImageResultArrayAdapter imageAdapter;
-    private final int REQUEST_CODE = 20;
-    
-    private String filter_color = "";
-    private String filter_size = "";
-    private String filter_type = "";
-    private String filter_site = "";
+  EditText etQuery;
+  GridView gvResults;
+  Button btnSearch;
+  ArrayList<ImageResult> imageResults = new ArrayList<ImageResult>();
+  ImageResultArrayAdapter imageAdapter;
+  private final int REQUEST_CODE = 20;
+  private String filter_color = "";
+  private String filter_size = "";
+  private String filter_type = "";
+  private String filter_site = "";
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search);
-		setupViews();
-		imageAdapter = new ImageResultArrayAdapter(this, imageResults);
-		gvResults.setAdapter(imageAdapter);
-		gvResults.setOnItemClickListener(new OnItemClickListener(){
-			@Override
-			public void onItemClick(AdapterView<?> adapter, View parent, int position, long l) {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_search);
+    setupViews();
+    imageAdapter = new ImageResultArrayAdapter(this, imageResults);
+    gvResults.setAdapter(imageAdapter);
+    gvResults.setOnItemClickListener(new OnItemClickListener(){
+	    @Override
+	    public void onItemClick(AdapterView<?> adapter, View parent, int position, long l) {
 				Intent i = new Intent(getApplicationContext(), ImageDisplayActivity.class);
 				ImageResult imageResult = imageResults.get(position);
 				i.putExtra("result", imageResult);
@@ -82,16 +81,16 @@ public class SearchActivity extends ActionBarActivity {
      "&imgtype=" + filter_type +
      "&q=" + Uri.encode(query), 
      new JsonHttpResponseHandler() {
-				@Override         
-				public void onSuccess(JSONObject response) {
-					JSONArray imageJsonResults = null;
-					try {
-						imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
-					    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-			  }
+       @Override
+       public void onSuccess(JSONObject response) {
+         JSONArray imageJsonResults = null;
+         try {
+           imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
+           imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
+         } catch (JSONException e) {
+           e.printStackTrace();
+         }
+       }
    });
 }
 
